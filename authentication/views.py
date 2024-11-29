@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from .serilizer import RegisterSerializer, LoginSerializer
 from rest_framework.authtoken.models import Token
 from django.shortcuts import render
+from django.shortcuts import redirect
  
 
 
@@ -34,7 +35,7 @@ class LoginView(APIView):
             user = authenticate(username=user.email, password=password)
             if user is not None:
                 token ,created= Token.objects.get_or_create(user=user)
-                return render(request,'home.html' )
+                return redirect('http://localhost:5173/')
             else:
                 return Response({"error": "Invalid email or password"}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
