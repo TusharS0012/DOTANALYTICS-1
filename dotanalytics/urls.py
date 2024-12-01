@@ -21,9 +21,6 @@ from authentication import views
 urlpatterns = [
     path('admin/', admin.site.urls),
      
- 
-
- 
     path('signup/',views. RegisterView.as_view(), name='signup'),
     path('login/',views. LoginView.as_view(), name='login'),
     path('',views.home, name='home '),
